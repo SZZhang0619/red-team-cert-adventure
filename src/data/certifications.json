@@ -1,0 +1,219 @@
+{
+  "learningPaths": {
+    "novice": {
+      "title": "資安萌新",
+      "description": "適合資安初學者的入門證照",
+      "color": "from-blue-500 to-cyan-500",
+      "certifications": [
+        {
+          "name": "CEH",
+          "fullName": "Certified Ethical Hacker",
+          "provider": "EC-Council",
+          "logo": "🛡️",
+          "description": "道德駭客認證，學習基礎滲透測試技術",
+          "url": "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/",
+          "difficulty": "初級",
+          "duration": "3-6個月"
+        },
+        {
+          "name": "eJPT",
+          "fullName": "eLearnSecurity Junior Penetration Tester",
+          "provider": "eLearnSecurity",
+          "logo": "🎯",
+          "description": "初級滲透測試認證，實務導向的入門證照",
+          "url": "https://elearnsecurity.com/product/ejpt-certification/",
+          "difficulty": "初級",
+          "duration": "2-4個月"
+        },
+        {
+          "name": "PNPT",
+          "fullName": "Practical Network Penetration Tester",
+          "provider": "TCM Security",
+          "logo": "🔍",
+          "description": "實務網路滲透測試認證",
+          "url": "https://certifications.tcm-sec.com/pnpt/",
+          "difficulty": "初級",
+          "duration": "3-5個月"
+        },
+        {
+          "name": "CNPen",
+          "fullName": "Certified Network Penetration Tester",
+          "provider": "The SecOps Group",
+          "logo": "🌐",
+          "description": "網路滲透測試認證",
+          "url": "https://secops.group/product/certified-network-pentester/",
+          "difficulty": "初級",
+          "duration": "2-4個月"
+        }
+      ]
+    },
+    "aspiring": {
+      "title": "想成為紅隊仔",
+      "description": "進階紅隊技能證照",
+      "color": "from-orange-500 to-red-500",
+      "certifications": [
+        {
+          "name": "OSCP",
+          "fullName": "Offensive Security Certified Professional",
+          "provider": "Offensive Security",
+          "logo": "⚔️",
+          "description": "業界知名的滲透測試認證，強調實務操作",
+          "url": "https://www.offensive-security.com/pwk-oscp/",
+          "difficulty": "中級",
+          "duration": "6-12個月"
+        },
+        {
+          "name": "CRTA",
+          "fullName": "Certified Red Team Analyst",
+          "provider": "CyberWarFare Labs",
+          "logo": "🔴",
+          "description": "紅隊分析師認證，專注於紅隊戰術",
+          "url": "https://cyberwarfare.live/product/red-team-analyst-crta/",
+          "difficulty": "中級",
+          "duration": "4-8個月"
+        },
+        {
+          "name": "CRTP",
+          "fullName": "Certified Red Team Professional",
+          "provider": "Altered Security",
+          "logo": "🏰",
+          "description": "紅隊專業認證，Active Directory 攻擊技術",
+          "url": "https://www.alteredsecurity.com/post/certified-red-team-professional-crtp",
+          "difficulty": "中級",
+          "duration": "3-6個月"
+        },
+        {
+          "name": "BSCP",
+          "fullName": "Burp Suite Certified Practitioner",
+          "provider": "PortSwigger",
+          "logo": "🕷️",
+          "description": "Web 應用程式安全測試認證",
+          "url": "https://portswigger.net/web-security/certification",
+          "difficulty": "中級",
+          "duration": "2-4個月"
+        }
+      ]
+    },
+    "master": {
+      "title": "紅隊大佬",
+      "description": "高階紅隊專家證照",
+      "color": "from-purple-500 to-pink-500",
+      "certifications": [
+        {
+          "name": "OSWE",
+          "fullName": "Offensive Security Web Expert",
+          "provider": "Offensive Security",
+          "logo": "🌐",
+          "description": "Web 應用程式滲透測試專家認證",
+          "url": "https://www.offensive-security.com/awae-oswe/",
+          "difficulty": "高級",
+          "duration": "8-12個月"
+        },
+        {
+          "name": "OSEP",
+          "fullName": "Offensive Security Experienced Penetration Tester",
+          "provider": "Offensive Security",
+          "logo": "👑",
+          "description": "進階滲透測試專家認證",
+          "url": "https://www.offensive-security.com/pen300-osep/",
+          "difficulty": "高級",
+          "duration": "8-12個月"
+        },
+        {
+          "name": "OSED",
+          "fullName": "Offensive Security Exploit Developer",
+          "provider": "Offensive Security",
+          "logo": "💥",
+          "description": "漏洞開發專家認證",
+          "url": "https://www.offensive-security.com/exp301-osed/",
+          "difficulty": "高級",
+          "duration": "10-15個月"
+        },
+        {
+          "name": "CRTM",
+          "fullName": "Certified Red Team Master",
+          "provider": "Zero-Point Security",
+          "logo": "🏆",
+          "description": "紅隊大師認證，最高階的紅隊證照",
+          "url": "https://www.zeropointsecurity.co.uk/red-team-ops",
+          "difficulty": "專家級",
+          "duration": "12-18個月"
+        }
+      ]
+    }
+  },
+  "learningResources": [
+    {
+      "name": "Hack The Box",
+      "description": "全球最大的滲透測試練習平台",
+      "url": "https://www.hackthebox.com/",
+      "logo": "📦",
+      "category": "練習平台",
+      "difficulty": "初級-高級"
+    },
+    {
+      "name": "TryHackMe",
+      "description": "適合初學者的互動式學習平台",
+      "url": "https://tryhackme.com/",
+      "logo": "🎮",
+      "category": "練習平台",
+      "difficulty": "初級-中級"
+    },
+    {
+      "name": "OffSec Proving Grounds",
+      "description": "Offensive Security 官方練習環境",
+      "url": "https://www.offensive-security.com/labs/",
+      "logo": "⚡",
+      "category": "練習平台",
+      "difficulty": "中級-高級"
+    },
+    {
+      "name": "Virtual Hacking Labs",
+      "description": "虛擬滲透測試實驗室",
+      "url": "https://www.virtualhackinglabs.com/",
+      "logo": "🔬",
+      "category": "練習平台",
+      "difficulty": "初級-中級"
+    },
+    {
+      "name": "Altered Security Red Labs",
+      "description": "Active Directory 攻擊練習環境",
+      "url": "https://www.alteredsecurity.com/redteamlabs",
+      "logo": "🏰",
+      "category": "練習平台",
+      "difficulty": "中級-高級"
+    },
+    {
+      "name": "Mossé Cyber Security Institute",
+      "description": "網路安全培訓機構",
+      "url": "https://www.mosse-institute.com/",
+      "logo": "🎓",
+      "category": "培訓機構",
+      "difficulty": "初級-高級"
+    },
+    {
+      "name": "HackTricks",
+      "description": "滲透測試技術知識庫",
+      "url": "https://book.hacktricks.xyz/",
+      "logo": "📚",
+      "category": "知識庫",
+      "difficulty": "中級-高級"
+    },
+    {
+      "name": "WiFiChallenge Lab",
+      "description": "無線網路安全測試環境",
+      "url": "https://wifichallenge.com/",
+      "logo": "📡",
+      "category": "專項練習",
+      "difficulty": "中級"
+    },
+    {
+      "name": "Web Security Academy",
+      "description": "PortSwigger 的 Web 安全學習平台",
+      "url": "https://portswigger.net/web-security",
+      "logo": "🕷️",
+      "category": "Web 安全",
+      "difficulty": "初級-高級"
+    }
+  ]
+}
