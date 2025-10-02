@@ -1,0 +1,474 @@
+{
+  "title": "TryHackMe 學習地圖",
+  "description": "從入門到精通的完整學習路線",
+  "levels": [
+    {
+      "id": 1,
+      "title": "第一級 — 簡介",
+      "subtitle": "入門｜建立基礎觀念",
+      "estimatedTime": "每個 1-3 小時",
+      "color": "from-blue-400 to-cyan-400",
+      "icon": "🎯",
+      "description": "建立 Linux 基礎、連線工具與資安研究思維",
+      "priority": ["Welcome", "Linux", "OpenVPN"],
+      "rooms": [
+        {
+          "name": "OpenVPN",
+          "description": "入門",
+          "url": "https://tryhackme.com/room/openvpn",
+          "completed": false
+        },
+        {
+          "name": "歡迎",
+          "description": "TryHackMe 新手導覽",
+          "url": "https://tryhackme.com/jr/welcome",
+          "completed": false
+        },
+        {
+          "name": "研究入門",
+          "description": "Intro to Research",
+          "url": "https://tryhackme.com/room/introtoresearch",
+          "completed": false
+        },
+        {
+          "name": "學習Linux",
+          "description": "ZTH Linux",
+          "url": "https://tryhackme.com/room/zthlinux",
+          "completed": false
+        },
+        {
+          "name": "滲透測試速成班",
+          "description": "CCPentesting",
+          "url": "https://tryhackme.com/room/ccpentesting",
+          "completed": false
+        },
+        {
+          "name": "Google Hacking",
+          "description": "Dorking",
+          "url": "https://tryhackme.com/room/googledorking",
+          "completed": false
+        },
+        {
+          "name": "OHsint",
+          "description": "OSINT 基礎",
+          "url": "https://tryhackme.com/room/ohsint",
+          "completed": false
+        },
+        {
+          "name": "Shodan.io",
+          "description": "搜尋裝置",
+          "url": "https://tryhackme.com/room/shodan",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "第二級 — 工具",
+      "subtitle": "實作工具與常用技巧",
+      "estimatedTime": "每個 2-6 小時",
+      "color": "from-green-400 to-emerald-400",
+      "icon": "🛠️",
+      "description": "掌握 Nmap、Web Scanning、Metasploit、Hydra 等實務工具",
+      "priority": ["Nmap", "Metasploit", "Hydra"],
+      "rooms": [
+        {
+          "name": "Tmux",
+          "description": "Terminal 多工管理",
+          "url": "https://tryhackme.com/room/rptmux",
+          "completed": false
+        },
+        {
+          "name": "Nmap",
+          "description": "網路掃描工具",
+          "url": "https://tryhackme.com/room/rpnmap",
+          "completed": false
+        },
+        {
+          "name": "網頁掃描",
+          "description": "Web Scanning",
+          "url": "https://tryhackme.com/room/rpwebscanning",
+          "completed": false
+        },
+        {
+          "name": "Sublist3r",
+          "description": "子域名探測",
+          "url": "https://tryhackme.com/room/rpsublist3r",
+          "completed": false
+        },
+        {
+          "name": "Metasploit",
+          "description": "滲透測試框架",
+          "url": "https://tryhackme.com/room/rpmetasploit",
+          "completed": false
+        },
+        {
+          "name": "Hydra",
+          "description": "暴力破解工具",
+          "url": "https://tryhackme.com/room/hydra",
+          "completed": false
+        },
+        {
+          "name": "Linux 提權",
+          "description": "一般篇",
+          "url": "https://tryhackme.com/room/linuxprivesc",
+          "completed": false
+        },
+        {
+          "name": "Vulnversity",
+          "description": "入門 CTF",
+          "url": "https://tryhackme.com/room/vulnversity",
+          "completed": false
+        },
+        {
+          "name": "Blue",
+          "description": "Windows 漏洞利用",
+          "url": "https://tryhackme.com/room/blue",
+          "completed": false
+        },
+        {
+          "name": "Simple CTF",
+          "description": "簡單 CTF 挑戰",
+          "url": "https://tryhackme.com/room/easyctf",
+          "completed": false
+        },
+        {
+          "name": "Bounty Hacker",
+          "description": "賞金獵人主題",
+          "url": "https://tryhackme.com/room/cowboyhacker",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "第三級 — 加密與雜湊",
+      "subtitle": "搭配 CTF 練習",
+      "estimatedTime": "每個 2-6 小時",
+      "color": "from-yellow-400 to-orange-400",
+      "icon": "🔐",
+      "description": "雜湊破解、密碼學概念與實務認證攻擊",
+      "priority": ["Crack the Hash", "hashcat"],
+      "rooms": [
+        {
+          "name": "破解雜湊",
+          "description": "Crack the Hash",
+          "url": "https://tryhackme.com/room/crackthehash",
+          "completed": false
+        },
+        {
+          "name": "Agent Sudo",
+          "description": "CTF 題",
+          "url": "https://tryhackme.com/room/agentsudoctf",
+          "completed": false
+        },
+        {
+          "name": "The Cod Caper",
+          "description": "密碼學挑戰",
+          "url": "https://tryhackme.com/room/thecodcaper",
+          "completed": false
+        },
+        {
+          "name": "Ice",
+          "description": "Windows 滲透",
+          "url": "https://tryhackme.com/room/ice",
+          "completed": false
+        },
+        {
+          "name": "Lazy Admin",
+          "description": "Web 漏洞利用",
+          "url": "https://tryhackme.com/room/lazyadmin",
+          "completed": false
+        },
+        {
+          "name": "基本滲透測試",
+          "description": "Basic Pentesting JT",
+          "url": "https://tryhackme.com/room/basicpentestingjt",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "第四級 — 網頁",
+      "subtitle": "核心漏洞攻防",
+      "estimatedTime": "每個 3-8 小時",
+      "color": "from-red-400 to-pink-400",
+      "icon": "🌐",
+      "description": "深入學習 OWASP Top10 與 Web 漏洞利用",
+      "priority": ["OWASP Top10", "Juice Shop"],
+      "rooms": [
+        {
+          "name": "OWASP 十大漏洞",
+          "description": "Web 安全基礎",
+          "url": "https://tryhackme.com/room/owasptop10",
+          "completed": false
+        },
+        {
+          "name": "檔案包含",
+          "description": "Inclusion",
+          "url": "https://tryhackme.com/room/inclusion",
+          "completed": false
+        },
+        {
+          "name": "注入漏洞",
+          "description": "Injection",
+          "url": "https://tryhackme.com/room/injection",
+          "completed": false
+        },
+        {
+          "name": "Juice Shop",
+          "description": "實戰練習",
+          "url": "https://tryhackme.com/room/owaspjuiceshop",
+          "completed": false
+        },
+        {
+          "name": "Ignite",
+          "description": "CMS 漏洞",
+          "url": "https://tryhackme.com/room/ignite",
+          "completed": false
+        },
+        {
+          "name": "Overpass",
+          "description": "密碼管理器漏洞",
+          "url": "https://tryhackme.com/room/overpass",
+          "completed": false
+        },
+        {
+          "name": "Year of the Rabbit",
+          "description": "綜合挑戰",
+          "url": "https://tryhackme.com/room/yearoftherabbit",
+          "completed": false
+        },
+        {
+          "name": "DevelPy",
+          "description": "Python Web",
+          "url": "https://tryhackme.com/room/bsidesgtdevelpy",
+          "completed": false
+        },
+        {
+          "name": "Jack of all trades",
+          "description": "多技能挑戰",
+          "url": "https://tryhackme.com/room/jackofalltrades",
+          "completed": false
+        },
+        {
+          "name": "Bolt",
+          "description": "CMS 滲透",
+          "url": "https://tryhackme.com/room/bolt",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "第五級 — 逆向工程",
+      "subtitle": "進階",
+      "estimatedTime": "每個 4-12 小時",
+      "color": "from-purple-400 to-indigo-400",
+      "icon": "🔬",
+      "description": "學習反匯編、動靜態分析工具",
+      "priority": ["Ghidra", "x86_64"],
+      "rooms": [
+        {
+          "name": "x86_64 入門",
+          "description": "組合語言基礎",
+          "url": "https://tryhackme.com/room/introtox8664",
+          "completed": false
+        },
+        {
+          "name": "Ghidra 教學",
+          "description": "反編譯工具",
+          "url": "https://tryhackme.com/room/ccghidra",
+          "completed": false
+        },
+        {
+          "name": "Radare2 教學",
+          "description": "逆向框架",
+          "url": "https://tryhackme.com/room/ccradare2",
+          "completed": false
+        },
+        {
+          "name": "隱寫術",
+          "description": "Stego",
+          "url": "https://tryhackme.com/room/ccstego",
+          "completed": false
+        },
+        {
+          "name": "逆向工程",
+          "description": "Reverse Engineering",
+          "url": "https://tryhackme.com/room/reverseengineering",
+          "completed": false
+        },
+        {
+          "name": "ELF 檔案逆向",
+          "description": "Reverselfiles",
+          "url": "https://tryhackme.com/room/reverselfiles",
+          "completed": false
+        },
+        {
+          "name": "傾倒路由器韌體",
+          "description": "firmware dump",
+          "url": "https://tryhackme.com/room/rfirmware",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "第六級 — 提權",
+      "subtitle": "Privilege Escalation",
+      "estimatedTime": "每個 3-8 小時",
+      "color": "from-orange-500 to-red-500",
+      "icon": "⬆️",
+      "description": "Linux 與 Windows 提權技術實戰",
+      "priority": ["Linux PrivEsc Arena", "Windows PrivEsc Arena"],
+      "rooms": [
+        {
+          "name": "Sudo 安全繞過",
+          "description": "sudo vuln sbypass",
+          "url": "https://tryhackme.com/room/sudovulnsbypass",
+          "completed": false
+        },
+        {
+          "name": "Sudo 緩衝區溢位",
+          "description": "sudovulnsbof",
+          "url": "https://tryhackme.com/room/sudovulnsbof",
+          "completed": false
+        },
+        {
+          "name": "Windows 提權場景",
+          "description": "Arena",
+          "url": "https://tryhackme.com/room/windowsprivescarena",
+          "completed": false
+        },
+        {
+          "name": "Linux 提權場景",
+          "description": "Arena",
+          "url": "https://tryhackme.com/room/linuxprivescarena",
+          "completed": false
+        },
+        {
+          "name": "Windows 提權",
+          "description": "Windows 10 privesc",
+          "url": "https://tryhackme.com/room/windows10privesc",
+          "completed": false
+        },
+        {
+          "name": "Blaster",
+          "description": "Windows 漏洞",
+          "url": "https://tryhackme.com/room/blaster",
+          "completed": false
+        },
+        {
+          "name": "Kenobi",
+          "description": "Linux 提權實戰",
+          "url": "https://tryhackme.com/room/kenobi",
+          "completed": false
+        },
+        {
+          "name": "C4PTUR3TH3FL4G",
+          "description": "奪旗 CTF",
+          "url": "https://tryhackme.com/room/c4ptur3th3fl4g",
+          "completed": false
+        },
+        {
+          "name": "Pickle Rick",
+          "description": "趣味 CTF",
+          "url": "https://tryhackme.com/room/picklerick",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "第七級 — CTF 綜合練習",
+      "subtitle": "實戰整合",
+      "estimatedTime": "每個 3-10 小時",
+      "color": "from-pink-500 to-purple-500",
+      "icon": "🏆",
+      "description": "整合所有技術的實戰挑戰",
+      "priority": ["Buffer Overflow Prep", "Post Exploit"],
+      "rooms": [
+        {
+          "name": "後滲透基礎",
+          "description": "Post Exploit",
+          "url": "https://tryhackme.com/room/postexploit",
+          "completed": false
+        },
+        {
+          "name": "Smag Grotto",
+          "description": "綜合挑戰",
+          "url": "https://tryhackme.com/room/smaggrotto",
+          "completed": false
+        },
+        {
+          "name": "Dogcat",
+          "description": "LFI 進階",
+          "url": "https://tryhackme.com/room/dogcat",
+          "completed": false
+        },
+        {
+          "name": "LFI 基礎",
+          "description": "Local File Inclusion basics",
+          "url": "https://tryhackme.com/room/lfibasics",
+          "completed": false
+        },
+        {
+          "name": "緩衝區溢位準備",
+          "description": "Buffer overflow prep",
+          "url": "https://tryhackme.com/room/bufferoverflowprep",
+          "completed": false
+        },
+        {
+          "name": "逃出牢籠",
+          "description": "Breakout the Cage 1",
+          "url": "https://tryhackme.com/room/breakoutthecage1",
+          "completed": false
+        },
+        {
+          "name": "Lian Yu",
+          "description": "綜合滲透",
+          "url": "https://tryhackme.com/room/lianyu",
+          "completed": false
+        }
+      ]
+    }
+  ],
+  "learningPlan": {
+    "title": "學習計畫建議",
+    "description": "如何把清單變成可執行的路徑",
+    "phases": [
+      {
+        "phase": "入門 2 週",
+        "goal": "打穩基礎",
+        "tasks": ["完成第一級（Welcome、Linux、OpenVPN、Intro to Research）"]
+      },
+      {
+        "phase": "工具 2-4 週",
+        "goal": "掌握工具",
+        "tasks": ["Nmap、Tmux、Metasploit、Hydra、Web Scanning、Sublist3r", "每週專注 2-3 門工具"]
+      },
+      {
+        "phase": "漏洞與 Web（4-8 週）",
+        "goal": "理解漏洞",
+        "tasks": ["OWASP Top10、Juice Shop、Injection、Inclusion、Overpass", "深做練習"]
+      },
+      {
+        "phase": "CTF 與提權",
+        "goal": "持續輪替",
+        "tasks": ["每週挑 1-2 個 CTF 題目", "Vulnversity、Blue、Lazy Admin、Pickle Rick"]
+      },
+      {
+        "phase": "逆向與進階",
+        "goal": "視興趣深入",
+        "tasks": ["當你對 exploit 機制好奇再進入", "x86/Ghidra/ROPE 等房間"]
+      },
+      {
+        "phase": "每週小目標",
+        "goal": "持續進步",
+        "tasks": ["理解概念 + 實作 1 個 lab", "寫筆記/用 Notion 記錄指令與流程"]
+      }
+    ]
+  }
+}

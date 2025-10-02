@@ -5,13 +5,15 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog.jsx'
-import { ExternalLink, Shield, Target, Crown, BookOpen, Users, Zap } from 'lucide-react'
+import { ExternalLink, Shield, Target, Crown, BookOpen, Users, Zap, Map, CheckCircle2, Circle } from 'lucide-react'
 import certificationsData from './data/certifications.json'
+import tryhackmeRoadmap from './data/tryhackme-roadmap.json'
 import './App.css'
 
 function App() {
-  const [selectedPath, setSelectedPath] = useState(null)
   const [particlesInit, setParticlesInit] = useState(false)
+  const [showRoadmap, setShowRoadmap] = useState(false)
+  const [completedRooms, setCompletedRooms] = useState({})
 
   // 初始化 tsParticles
   const particlesInitialization = useCallback(async (engine) => {
@@ -201,7 +203,7 @@ function App() {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {path.certifications.map((cert, index) => (
+                  {path.certifications.map((cert) => (
                     <Dialog key={cert.name}>
                       <DialogTrigger asChild>
                         <Card className="cert-card cursor-pointer h-full">
@@ -279,7 +281,7 @@ function App() {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificationsData.learningResources.map((resource, index) => (
+              {certificationsData.learningResources.map((resource) => (
                 <Card key={resource.name} className="resource-card h-full">
                   <CardHeader>
                     <div className="flex items-center gap-3">
@@ -296,16 +298,28 @@ function App() {
                     <p className="text-sm text-muted-foreground mb-4">
                       {resource.description}
                     </p>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-2">
                       <Badge variant="secondary" className="text-xs">
                         {resource.difficulty}
                       </Badge>
-                      <Button size="sm" asChild>
-                        <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          前往學習
-                        </a>
-                      </Button>
+                      <div className="flex gap-2">
+                        {resource.name === "TryHackMe" && (
+                          <Button 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => setShowRoadmap(true)}
+                          >
+                            <Map className="w-3 h-3 mr-1" />
+                            學習地圖
+                          </Button>
+                        )}
+                        <Button size="sm" asChild>
+                          <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            前往學習
+                          </a>
+                        </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -313,6 +327,137 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* TryHackMe 學習地圖 Dialog */}
+        <Dialog open={showRoadmap} onOpenChange={setShowRoadmap}>
+          <DialogContent className="max-w-6xl max-h-[85vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-3 text-3xl">
+                <span className="text-4xl">🎮</span>
+                {tryhackmeRoadmap.title}
+              </DialogTitle>
+              <DialogDescription className="text-lg">
+                {tryhackmeRoadmap.description}
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-8 mt-6">
+              {/* 學習關卡 */}
+              {tryhackmeRoadmap.levels.map((level) => (
+                <div key={level.id} className="space-y-4">
+                  <div className={`bg-gradient-to-r ${level.color} p-6 rounded-lg text-white`}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-3xl">{level.icon}</span>
+                      <div>
+                        <h3 className="text-2xl font-bold">{level.title}</h3>
+                        <p className="text-sm opacity-90">{level.subtitle}</p>
+                      </div>
+                    </div>
+                    <p className="text-sm opacity-90 mt-2">{level.description}</p>
+                    <div className="flex gap-4 mt-3 text-sm">
+                      <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                        ⏱️ {level.estimatedTime}
+                      </Badge>
+                      <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                        📚 {level.rooms.length} 個房間
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {/* 房間列表 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-4">
+                    {level.rooms.map((room, idx) => {
+                      const roomKey = `${level.id}-${idx}`
+                      const isCompleted = completedRooms[roomKey]
+                      
+                      return (
+                        <div
+                          key={idx}
+                          className={`flex items-center gap-3 p-3 rounded-lg border transition-all hover:shadow-md ${
+                            isCompleted ? 'bg-green-50 border-green-300' : 'bg-secondary/30 border-border'
+                          }`}
+                        >
+                          <button
+                            onClick={() => {
+                              setCompletedRooms(prev => ({
+                                ...prev,
+                                [roomKey]: !prev[roomKey]
+                              }))
+                            }}
+                            className="flex-shrink-0"
+                          >
+                            {isCompleted ? (
+                              <CheckCircle2 className="w-5 h-5 text-green-600" />
+                            ) : (
+                              <Circle className="w-5 h-5 text-muted-foreground" />
+                            )}
+                          </button>
+                          <div className="flex-1 min-w-0">
+                            <h4 className={`font-semibold text-sm ${isCompleted ? 'line-through text-muted-foreground' : ''}`}>
+                              {room.name}
+                            </h4>
+                            <p className="text-xs text-muted-foreground">{room.description}</p>
+                          </div>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            asChild
+                            className="flex-shrink-0"
+                          >
+                            <a href={room.url} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </Button>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  {/* 優先建議 */}
+                  {level.priority && level.priority.length > 0 && (
+                    <div className="pl-4">
+                      <p className="text-sm text-muted-foreground">
+                        💡 <strong>優先完成：</strong>{level.priority.join('、')}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* 學習計畫建議 */}
+              <div className="border-t pt-6 mt-8">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Target className="w-6 h-6" />
+                  {tryhackmeRoadmap.learningPlan.title}
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  {tryhackmeRoadmap.learningPlan.description}
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {tryhackmeRoadmap.learningPlan.phases.map((phase, idx) => (
+                    <Card key={idx} className="border-2">
+                      <CardHeader>
+                        <CardTitle className="text-lg">{phase.phase}</CardTitle>
+                        <CardDescription>{phase.goal}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-2">
+                          {phase.tasks.map((task, taskIdx) => (
+                            <li key={taskIdx} className="text-sm flex items-start gap-2">
+                              <span className="text-accent mt-0.5">▸</span>
+                              <span>{task}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Footer */}
         <footer className="py-12 px-4 text-center border-t border-border">
