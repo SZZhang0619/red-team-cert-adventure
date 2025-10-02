@@ -186,10 +186,10 @@ function App() {
         <section className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 glow-text float-animation">
-              紅隊勇者的
+              紅隊
             </h1>
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-accent">
-              證照冒險攻略
+              修煉之路
             </h2>
             <p className="text-xl md:text-2xl mb-12 text-muted-foreground max-w-2xl mx-auto">
               一個為資安挑戰者打造的學習路線圖
