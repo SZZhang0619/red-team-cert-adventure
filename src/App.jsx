@@ -13,7 +13,26 @@ import './App.css'
 function App() {
   const [particlesInit, setParticlesInit] = useState(false)
   const [showRoadmap, setShowRoadmap] = useState(false)
-  const [completedRooms, setCompletedRooms] = useState({})
+  
+  // 從 localStorage 讀取已完成的房間狀態
+  const [completedRooms, setCompletedRooms] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tryhackme-completed-rooms')
+      return saved ? JSON.parse(saved) : {}
+    } catch (error) {
+      console.error('無法讀取已完成房間狀態:', error)
+      return {}
+    }
+  })
+
+  // 當 completedRooms 變更時，保存到 localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('tryhackme-completed-rooms', JSON.stringify(completedRooms))
+    } catch (error) {
+      console.error('無法保存已完成房間狀態:', error)
+    }
+  }, [completedRooms])
 
   // 初始化 tsParticles
   const particlesInitialization = useCallback(async (engine) => {
