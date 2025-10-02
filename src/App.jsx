@@ -124,7 +124,16 @@ function App() {
     return cleanup
   }, [])
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId, pathKey = null) => {
+    if (pathKey) {
+      // 如果有指定 pathKey，滾動到對應的路徑區塊
+      const element = document.getElementById(`path-${pathKey}`)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+    }
+    // 否則滾動到指定的 section
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -175,7 +184,7 @@ function App() {
                 <Button
                   key={key}
                   className={`path-button bg-gradient-to-r ${path.color} text-white`}
-                  onClick={() => scrollToSection('learning-paths')}
+                  onClick={() => scrollToSection('learning-paths', key)}
                 >
                   <PathIcon path={key} />
                   <span className="ml-2">{path.title}</span>
@@ -193,7 +202,7 @@ function App() {
             </h2>
             
             {Object.entries(certificationsData.learningPaths).map(([pathKey, path]) => (
-              <div key={pathKey} className="mb-20">
+              <div key={pathKey} id={`path-${pathKey}`} className="mb-20 scroll-mt-20">
                 <div className="text-center mb-12">
                   <h3 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-4">
                     <PathIcon path={pathKey} />
