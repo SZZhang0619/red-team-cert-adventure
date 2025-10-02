@@ -12,15 +12,15 @@ import './App.css'
 
 // 學習資源快照圖片映射
 const screenshotMap = {
-  'Hack The Box': '/src/assets/screenshots/hackthebox.png',
-  'TryHackMe': '/src/assets/screenshots/tryhackme.png',
-  'OffSec Proving Grounds': '/src/assets/screenshots/offsec-proving-grounds.png',
-  'Virtual Hacking Labs': '/src/assets/screenshots/virtual-hacking-labs.png',
-  'Altered Security Red Labs': '/src/assets/screenshots/altered-security-red-labs.png',
-  'Mossé Cyber Security Institute': '/src/assets/screenshots/mosse-cyber-security-institute.png',
-  'HackTricks': '/src/assets/screenshots/hacktricks.png',
-  'WiFiChallenge Lab': '/src/assets/screenshots/wifichallenge-lab.png',
-  'Web Security Academy': '/src/assets/screenshots/web-security-academy.png',
+  'Hack The Box': `${import.meta.env.BASE_URL}screenshots/hackthebox.png`,
+  'TryHackMe': `${import.meta.env.BASE_URL}screenshots/tryhackme.png`,
+  'OffSec Proving Grounds': `${import.meta.env.BASE_URL}screenshots/offsec-proving-grounds.png`,
+  'Virtual Hacking Labs': `${import.meta.env.BASE_URL}screenshots/virtual-hacking-labs.png`,
+  'Altered Security Red Labs': `${import.meta.env.BASE_URL}screenshots/altered-security-red-labs.png`,
+  'Mossé Cyber Security Institute': `${import.meta.env.BASE_URL}screenshots/mosse-cyber-security-institute.png`,
+  'HackTricks': `${import.meta.env.BASE_URL}screenshots/hacktricks.png`,
+  'WiFiChallenge Lab': `${import.meta.env.BASE_URL}screenshots/wifichallenge-lab.png`,
+  'Web Security Academy': `${import.meta.env.BASE_URL}screenshots/web-security-academy.png`,
 }
 
 function App() {
@@ -452,7 +452,7 @@ function App() {
                               <h3 class="text-2xl font-bold mb-2 dark:text-white">${selectedResource.name}</h3>
                               <p class="text-slate-600 dark:text-slate-400 text-center px-6">
                                 網頁截圖尚未放置<br/>
-                                請將圖片放至 src/assets/screenshots/
+                                請將圖片放至 public/screenshots/
                               </p>
                             </div>
                           `
