@@ -27,6 +27,7 @@ function App() {
   const [particlesInit, setParticlesInit] = useState(false)
   const [showRoadmap, setShowRoadmap] = useState(false)
   const [selectedResource, setSelectedResource] = useState(null)
+  const [activePath, setActivePath] = useState(null)
   
   // 從 localStorage 讀取已完成的房間狀態
   const [completedRooms, setCompletedRooms] = useState(() => {
@@ -159,6 +160,9 @@ function App() {
 
   const scrollToSection = (sectionId, pathKey = null) => {
     if (pathKey) {
+      // 設置當前激活的路徑（不自動移除）
+      setActivePath(pathKey)
+      
       // 如果有指定 pathKey，滾動到對應的路徑區塊
       const element = document.getElementById(`path-${pathKey}`)
       if (element) {
@@ -197,7 +201,7 @@ function App() {
       {/* 主要內容 */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+        <section className="min-h-screen flex flex-col items-center justify-center pt-8 px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 glow-text float-animation">
               紅隊
@@ -213,7 +217,10 @@ function App() {
             
             {/* 學習路線快速入口 */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
+              <h3 
+                className="text-lg font-semibold mb-4 text-muted-foreground cursor-pointer hover:text-primary transition-colors"
+                onClick={() => scrollToSection('learning-paths')}
+              >
                 📚 選擇學習路線
               </h3>
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
@@ -232,7 +239,10 @@ function App() {
 
             {/* 實戰練習場快速入口 */}
             <div className="pt-8 border-t border-border/30 max-w-2xl mx-auto">
-              <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
+              <h3 
+                className="text-lg font-semibold mb-4 text-muted-foreground cursor-pointer hover:text-primary transition-colors"
+                onClick={() => scrollToSection('learning-resources')}
+              >
                 ⚔️ 開始實戰練習
               </h3>
               <div className="flex flex-wrap gap-3 justify-center">
@@ -241,7 +251,10 @@ function App() {
                     key={resource.name}
                     variant="outline"
                     className="resource-button hover:scale-105 transition-transform"
-                    onClick={() => scrollToSection('learning-resources')}
+                    onClick={() => {
+                      setActivePath(null)
+                      setSelectedResource(resource)
+                    }}
                   >
                     <span className="mr-2">{resource.logo}</span>
                     {resource.name}
@@ -260,8 +273,11 @@ function App() {
             </h2>
             
             {Object.entries(certificationsData.learningPaths).map(([pathKey, path]) => (
-              <div key={pathKey} id={`path-${pathKey}`} className="mb-20 scroll-mt-20">
-                <div className="text-center mb-12">
+              <div key={pathKey} id={`path-${pathKey}`} className={`mb-20 scroll-mt-20 transition-all duration-500 ${activePath === pathKey ? 'path-glow-active' : ''}`}>
+                <div 
+                  className="text-center mb-12 cursor-pointer"
+                  onClick={() => setActivePath(pathKey)}
+                >
                   <h3 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-4">
                     <PathIcon path={pathKey} />
                     {path.title}
@@ -273,7 +289,16 @@ function App() {
                   {path.certifications.map((cert) => (
                     <Dialog key={cert.name}>
                       <DialogTrigger asChild>
-                        <Card className="cert-card cursor-pointer h-full">
+                        <Card 
+                          className="cert-card cursor-pointer h-full"
+                          onClick={() => {
+                            // 如果點擊的不是當前激活的路徑，則變更激活對象
+                            if (activePath !== pathKey) {
+                              setActivePath(pathKey)
+                            }
+                            // 如果點擊的是當前激活的路徑，保持激活狀態
+                          }}
+                        >
                           <CardHeader className="text-center">
                             <div className="text-4xl mb-4">{cert.logo}</div>
                             <CardTitle className="text-xl font-bold">{cert.name}</CardTitle>
@@ -352,7 +377,10 @@ function App() {
                 <Card 
                   key={resource.name} 
                   className="resource-card h-full cursor-pointer hover:shadow-lg transition-shadow overflow-hidden flex flex-col"
-                  onClick={() => setSelectedResource(resource)}
+                  onClick={() => {
+                    setActivePath(null)
+                    setSelectedResource(resource)
+                  }}
                 >
                   <CardHeader>
                     <div className="flex items-start justify-between gap-3 mb-3">
@@ -635,7 +663,10 @@ function App() {
               保持學習的熱忱，持續實踐，你也能成為資安領域的頂尖高手！
             </p>
             <div className="flex justify-center gap-4">
-              <Button variant="outline" onClick={() => scrollToSection('learning-paths')}>
+              <Button variant="outline" onClick={() => {
+                setActivePath(null)
+                scrollToSection('learning-paths')
+              }}>
                 <Target className="w-4 h-4 mr-2" />
                 重新選擇路線
               </Button>
