@@ -178,18 +178,43 @@ function App() {
               從萌新到大佬的完整進化之路
             </p>
             
-            {/* 快速入口按鈕 */}
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              {Object.entries(certificationsData.learningPaths).map(([key, path]) => (
-                <Button
-                  key={key}
-                  className={`path-button bg-gradient-to-r ${path.color} text-white`}
-                  onClick={() => scrollToSection('learning-paths', key)}
-                >
-                  <PathIcon path={key} />
-                  <span className="ml-2">{path.title}</span>
-                </Button>
-              ))}
+            {/* 學習路線快速入口 */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
+                📚 選擇學習路線
+              </h3>
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                {Object.entries(certificationsData.learningPaths).map(([key, path]) => (
+                  <Button
+                    key={key}
+                    className={`path-button bg-gradient-to-r ${path.color} text-white`}
+                    onClick={() => scrollToSection('learning-paths', key)}
+                  >
+                    <PathIcon path={key} />
+                    <span className="ml-2">{path.title}</span>
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* 實戰練習場快速入口 */}
+            <div className="pt-8 border-t border-border/30 max-w-2xl mx-auto">
+              <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
+                ⚔️ 開始實戰練習
+              </h3>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {certificationsData.learningResources.map((resource) => (
+                  <Button
+                    key={resource.name}
+                    variant="outline"
+                    className="resource-button hover:scale-105 transition-transform"
+                    onClick={() => scrollToSection('learning-resources')}
+                  >
+                    <span className="mr-2">{resource.logo}</span>
+                    {resource.name}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
         </section>

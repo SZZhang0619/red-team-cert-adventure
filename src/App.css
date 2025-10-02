@@ -169,6 +169,12 @@
   @apply border-2 border-transparent hover:border-accent;
 }
 
+/* 實戰練習場按鈕 */
+.resource-button {
+  @apply border-2 transition-all duration-300;
+  @apply hover:bg-accent/10 hover:border-accent;
+}
+
 /* 資源卡片 */
 .resource-card {
   @apply bg-secondary border border-border rounded-lg p-4 transition-all duration-300;
