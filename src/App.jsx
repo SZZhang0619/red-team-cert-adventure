@@ -10,9 +10,23 @@ import certificationsData from './data/certifications.json'
 import tryhackmeRoadmap from './data/tryhackme-roadmap.json'
 import './App.css'
 
+// 學習資源快照圖片映射
+const screenshotMap = {
+  'Hack The Box': '/src/assets/screenshots/hackthebox.png',
+  'TryHackMe': '/src/assets/screenshots/tryhackme.png',
+  'OffSec Proving Grounds': '/src/assets/screenshots/offsec-proving-grounds.png',
+  'Virtual Hacking Labs': '/src/assets/screenshots/virtual-hacking-labs.png',
+  'Altered Security Red Labs': '/src/assets/screenshots/altered-security-red-labs.png',
+  'Mossé Cyber Security Institute': '/src/assets/screenshots/mosse-cyber-security-institute.png',
+  'HackTricks': '/src/assets/screenshots/hacktricks.png',
+  'WiFiChallenge Lab': '/src/assets/screenshots/wifichallenge-lab.png',
+  'Web Security Academy': '/src/assets/screenshots/web-security-academy.png',
+}
+
 function App() {
   const [particlesInit, setParticlesInit] = useState(false)
   const [showRoadmap, setShowRoadmap] = useState(false)
+  const [selectedResource, setSelectedResource] = useState(null)
   
   // 從 localStorage 讀取已完成的房間狀態
   const [completedRooms, setCompletedRooms] = useState(() => {
@@ -335,26 +349,31 @@ function App() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {certificationsData.learningResources.map((resource) => (
-                <Card key={resource.name} className="resource-card h-full">
+                <Card 
+                  key={resource.name} 
+                  className="resource-card h-full cursor-pointer hover:shadow-lg transition-shadow overflow-hidden flex flex-col"
+                  onClick={() => setSelectedResource(resource)}
+                >
                   <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl">{resource.logo}</span>
-                      <div>
-                        <CardTitle className="text-lg">{resource.name}</CardTitle>
-                        <Badge variant="outline" className="text-xs">
-                          {resource.category}
-                        </Badge>
-                      </div>
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <span className="text-3xl flex-shrink-0">{resource.logo}</span>
+                      {/* 難度標籤 - 右上角 */}
+                      <Badge variant="difficulty" className="text-xs">
+                        {resource.difficulty}
+                      </Badge>
+                    </div>
+                    <div className="space-y-2">
+                      <CardTitle className="text-lg leading-tight">{resource.name}</CardTitle>
+                      <Badge variant="category" className="text-xs">
+                        {resource.category}
+                      </Badge>
                     </div>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="flex-1 flex flex-col justify-between">
                     <p className="text-sm text-muted-foreground mb-4">
                       {resource.description}
                     </p>
-                    <div className="flex justify-between items-center gap-2">
-                      <Badge variant="secondary" className="text-xs">
-                        {resource.difficulty}
-                      </Badge>
+                    <div className="flex justify-end items-center gap-2">
                       <div className="flex gap-2">
                         {resource.name === "TryHackMe" && (
                           <Button 
@@ -380,6 +399,99 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* 學習資源詳情 Dialog */}
+        <Dialog open={selectedResource !== null} onOpenChange={() => setSelectedResource(null)}>
+          <DialogContent className="w-[80vw] h-[80vh] max-w-[80vw] max-h-[80vh] overflow-hidden flex flex-col p-6">
+            {selectedResource && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-3 text-3xl">
+                    <span className="text-4xl">{selectedResource.logo}</span>
+                    {selectedResource.name}
+                  </DialogTitle>
+                  <DialogDescription className="text-lg">
+                    {selectedResource.description}
+                  </DialogDescription>
+                </DialogHeader>
+                
+                <div className="flex-1 overflow-y-auto space-y-6 mt-4">
+                  {/* 資訊區塊 */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-muted-foreground">類別</h4>
+                      <Badge variant="category">{selectedResource.category}</Badge>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-muted-foreground">難度</h4>
+                      <Badge variant="difficulty">{selectedResource.difficulty}</Badge>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-muted-foreground">類型</h4>
+                      <Badge variant="platform">實戰平台</Badge>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-semibold text-muted-foreground">推薦度</h4>
+                      <div className="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                    </div>
+                  </div>
+
+                  {/* 網頁截圖 */}
+                  <div className="space-y-3">
+                    <div className="border rounded-lg overflow-hidden bg-muted/30 shadow-inner">
+                      <img
+                        src={screenshotMap[selectedResource.name]}
+                        alt={`${selectedResource.name} 網頁截圖`}
+                        className="w-full h-auto object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.onerror = null
+                          e.target.parentElement.innerHTML = `
+                            <div class="flex flex-col items-center justify-center h-64 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+                              <div class="text-6xl mb-4">${selectedResource.logo}</div>
+                              <h3 class="text-2xl font-bold mb-2 dark:text-white">${selectedResource.name}</h3>
+                              <p class="text-slate-600 dark:text-slate-400 text-center px-6">
+                                網頁截圖尚未放置<br/>
+                                請將圖片放至 src/assets/screenshots/
+                              </p>
+                            </div>
+                          `
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* 操作按鈕區 */}
+                  <div className="flex flex-wrap gap-3 pt-4 border-t">
+                    {selectedResource.name === "TryHackMe" && (
+                      <Button 
+                        variant="outline"
+                        className="flex-1 min-w-[200px]"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setSelectedResource(null)
+                          setTimeout(() => setShowRoadmap(true), 100)
+                        }}
+                      >
+                        <Map className="w-4 h-4 mr-2" />
+                        查看學習地圖
+                      </Button>
+                    )}
+                    <Button 
+                      className="flex-1 min-w-[200px]"
+                      asChild
+                    >
+                      <a href={selectedResource.url} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        前往 {selectedResource.name}
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* TryHackMe 學習地圖 Dialog */}
         <Dialog open={showRoadmap} onOpenChange={setShowRoadmap}>
